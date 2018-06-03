@@ -1,6 +1,10 @@
 DragSortListView
 ================
 
+NOTE : As the original projects and its various forks looks like not being maintained, and i need this for Blade (android music player), i forked and pushed the modifications i made here.
+So basically this is the fork i use in my projects and it is the only reason of this fork, you should not use it as i'm not maintaining it for other usages.
+Valou3433
+
 The original project is no longer maintained. I intend to maintain this fork of the project to a limited extent.
 The following things I intend to maintain:
 * API levels
