@@ -1,8 +1,5 @@
 package com.mobeta.android.dslv;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
@@ -11,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A subclass of {@link android.widget.CursorAdapter} that provides
@@ -20,14 +19,14 @@ import android.widget.ListAdapter;
  * To persist changes made by drag-sorts, one can retrieve the
  * mapping with the {@link #getCursorPositions()} method, which
  * returns the reordered list of Cursor positions.
- *
+ * <p>
  * An instance of this class is passed
  * to {@link DragSortListView#setAdapter(ListAdapter)} and, since
  * this class implements the {@link DragSortListView.DragSortListener}
  * interface, it is automatically set as the DragSortListener for
  * the DragSortListView instance.
  */
-public abstract class DragSortCursorAdapter extends CursorAdapter implements 
+public abstract class DragSortCursorAdapter extends CursorAdapter implements
         DragSortListView.DragSortListener {
 
     private static final int REMOVED = -1;
@@ -37,8 +36,8 @@ public abstract class DragSortCursorAdapter extends CursorAdapter implements
      */
     private SparseIntArray mListMapping = new SparseIntArray();
 
-    private List<Integer> mRemovedCursorPositions = new ArrayList<Integer>();
-    
+    private List<Integer> mRemovedCursorPositions = new ArrayList<>();
+
     @Deprecated
     public DragSortCursorAdapter(Context context, Cursor c) {
         super(context, c);
@@ -120,7 +119,7 @@ public abstract class DragSortCursorAdapter extends CursorAdapter implements
             }
             mListMapping.put(to, cursorFrom);
 
-            cleanMapping();        
+            cleanMapping();
             notifyDataSetChanged();
         }
     }
@@ -162,7 +161,7 @@ public abstract class DragSortCursorAdapter extends CursorAdapter implements
      * Remove unnecessary mappings from sparse array.
      */
     private void cleanMapping() {
-        List<Integer> toRemove = new ArrayList<Integer>();
+        List<Integer> toRemove = new ArrayList<>();
 
         final int size = mListMapping.size();
         for (int i = 0; i < size; i++) {
@@ -172,7 +171,7 @@ public abstract class DragSortCursorAdapter extends CursorAdapter implements
         }
 
         for (int position : toRemove) {
-        	mListMapping.delete(position);
+            mListMapping.delete(position);
         }
     }
 
@@ -187,7 +186,6 @@ public abstract class DragSortCursorAdapter extends CursorAdapter implements
      * operations).
      *
      * @param position List position
-     *
      * @return The mapped-to Cursor position
      */
     public int getCursorPosition(int position) {
@@ -199,7 +197,7 @@ public abstract class DragSortCursorAdapter extends CursorAdapter implements
      * list.
      */
     public List<Integer> getCursorPositions() {
-        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> result = new ArrayList<>();
 
         for (int i = 0; i < getCount(); i++) {
             result.add(mListMapping.get(i, i));
@@ -228,6 +226,4 @@ public abstract class DragSortCursorAdapter extends CursorAdapter implements
             return mListMapping.keyAt(index);
         }
     }
-
-
 }
