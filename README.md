@@ -9,7 +9,7 @@ The original project is no longer maintained. I intend to maintain this fork of 
 The following things I intend to maintain:
 * API levels
 * Compatibility with Android Studio
-* Bugs if found
+* Fix bugs if found
 
 I don't intend to add any new features although I may adjust things here and there in the codebase.
 
